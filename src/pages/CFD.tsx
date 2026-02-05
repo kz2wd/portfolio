@@ -3,12 +3,9 @@ import { useCollapse } from "react-collapsed";
 
 
 
-function InfoLine({info, content}: {info: string, content: string}) {
+function InfoLine({info, children}: {info: React.ReactNode, children: React.ReactNode }) {
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-
-  
-
   return (
     <div>
       
@@ -16,12 +13,16 @@ function InfoLine({info, content}: {info: string, content: string}) {
         {isExpanded ? <img src="/logos/expand_circle_down.svg" className="logo-black"/> : <img src="/logos/expand_circle_right.svg" className="logo-black"/>}
         {info}
       </button>
-      <section {...getCollapseProps()}>{content}</section>
+      <section {...getCollapseProps()}>
+        {children}
+      </section>
     </div>
   );
 }
 
 function CFD() {
+
+
   return (
     <>
       <div className="page-content" id="projects">
@@ -40,20 +41,43 @@ function CFD() {
           My contribution:
         </h4>
         <ul>
-          <InfoLine info="Built full CFD → dataset → training → evaluation pipeline" content="Here is what I did"/>
-          <InfoLine info="Reproduced results from a reference paper [Arxiv]" content="Here is what I did"/>
-          <InfoLine info="Identified discriminator inefficiency" content="Here is what I did"/>
-          <InfoLine info="Improved far-from-wall reconstruction (~10%)" content="Here is what I did"/>
-          <InfoLine info="Analyzed instability in GAN-based approaches" content="Here is what I did"/>
+          <InfoLine info="Built full CFD → dataset → training → evaluation pipeline">
+            <img src="/images/data_management.png" />
+      
+          </InfoLine>
+          <InfoLine info="Reproduced results from a reference paper [Arxiv]" > 
+            Three-dimensional generative adversarial networks for turbulent flow estimation from wall measurements
+            <ExternalResource link="https://arxiv.org/abs/2409.06548" name="Paper Arxiv"/>
+          </InfoLine>
+
+          <InfoLine info="Identified discriminator inefficiency">
+            Placeholder
+          </InfoLine>
+          <InfoLine info="Improved far-from-wall reconstruction (~10%)" >
+            Placeholder
+          </InfoLine>
+          <InfoLine info="Analyzed instability in GAN-based approaches">
+            Placeholder
+          </InfoLine>
         </ul>
 
         <h4>Technical stack</h4>
         <ul>
-          <InfoLine info="Environment: Python, Jupyter, Docker, SSH" content="Here is what I did"/>
-          <InfoLine info="Visualization: Paraview, VTK, Dash (Plotly), Seaborn" content="Here is what I did"/>
-          <InfoLine info="Data: S3 MinIO, PostGreSQL, SQLAlchemy, Numpy, Dask, Scipy, Zarr" content="Here is what I did"/>
-          <InfoLine info="ML: TensorFlow, PyTorch, mlflow" content="Here is what I did"/>
-          <InfoLine info="CFD: XCompact3D" content="Here is what I did"/>
+          <InfoLine info="Environment: Python, Jupyter, Docker, SSH">
+            Placeholder
+          </InfoLine>
+          <InfoLine info="Visualization: Paraview, VTK, Dash (Plotly), Seaborn">
+            Placeholder
+          </InfoLine>
+          <InfoLine info="Data: S3 MinIO, PostGreSQL, SQLAlchemy, Numpy, Dask, Scipy, Zarr">
+            Placeholder
+          </InfoLine>
+          <InfoLine info="ML: TensorFlow, PyTorch, mlflow">
+            Placeholder
+          </InfoLine>
+          <InfoLine info="CFD: XCompact3D">
+            Placeholder
+          </InfoLine>
         </ul>
         
         <h4>Results</h4>
