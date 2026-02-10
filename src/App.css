@@ -20,8 +20,6 @@ nav {
   display: flex;
   margin: auto;
   max-width: 1200px;
-  width: 80%;
-  padding: 0 0 0 10em;
   position: sticky;
   top: 10px;
   padding-bottom: 1px;
@@ -29,11 +27,11 @@ nav {
 }
 
 nav * {
-  font-size: 1.3em;
-  padding: 0 2em 0.7em;
+  font-size: 1em;
+  padding: 1em;
   margin: 0 1vw;
   font-weight: bold;
-  border-radius: 0 0 2vw 2vw;
+  border-radius: 2vw;
   transition: all 550ms;
   color: #ffffff; 
   background-color: #38b6ff;
@@ -69,7 +67,7 @@ header {
   /* background: #38B6FF; */
   background: linear-gradient(90deg,rgba(56, 182, 255, 1) 0%, rgba(0, 74, 173, 1) 100%);
   min-height: 35px;
-  height: 60px;
+  height: fit-content;
   padding: 1em 0em 1em 0em;
   position: sticky;
   top: -82px;
@@ -97,7 +95,7 @@ img {
   height: auto;
 }
 
-.btn {
+.btn-full {
   display: inline-block;
   background: #31a9e0;
   padding: 0.5rem 1rem;
@@ -109,9 +107,31 @@ img {
   width: 120px;
   justify-content: center;
 }
-.btn:hover {
+.btn-full:hover {
   background: #6ecaf1;
   color: white;
+}
+
+.btn {
+  display: inline-block;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1cap;
+  border-width: 1px;
+  border-color: white;
+  color: #31a9e0;
+  border-style: solid;
+  transition: all 200ms ease-out;
+  width: 120px;
+  justify-content: center;
+}
+.btn:hover {
+  border-color: #31a9e0;
+  color: #31a9e0;
+}
+
+button:hover {
+  border-color: #31a9e0;
 }
 
 .inline-container {
@@ -132,7 +152,7 @@ img {
 
 
 .page-content {
-  padding: 3em 0em;
+  padding: 8em 0em;
   margin: auto;
   max-width: 1200px;
 }
@@ -183,4 +203,8 @@ img {
 
 .logo-black {
   /* filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(12deg) brightness(105%) contrast(103%); */
+}
+
+.margin-4 {
+  margin: 4rem;
 }
