@@ -16,10 +16,10 @@ function App() {
       </style>
       <div id="aboutme"></div>
 
-      <header className="vast-shadow-regular">
+      <header >
         <div>
           <Link to="/"><img src="/logos/YC_logo_filled.svg" alt="My Logo :D" id="logo"/></Link>
-          <Link to="/" id="name"><span>Youri</span> <span>Chancrin</span></Link>
+          <Link to="/" id="name" className="vast-shadow-regular"><span>Youri</span> <span>Chancrin</span></Link>
           <nav>
             <HashLink to="/#aboutme">About me</HashLink>
             <HashLink to="/#projects">Projects</HashLink>
@@ -30,12 +30,16 @@ function App() {
 
       </header>
       
-      <Home />
+      <div className="main-page">
 
-      <CFD />
+        <Home />
 
-      <HPC />
+        <CFD />
 
+        <HPC />
+
+      </div>
+      
       {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<CFD />} />

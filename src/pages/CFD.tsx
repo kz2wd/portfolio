@@ -27,7 +27,7 @@ function CFD() {
     <>
       <div className="page-content" id="projects">
         <h3>Data-driven reconstruction of wall-bounded turbulent channel flows</h3>
-        
+        <p>6 months internship at Meiji University Fluid Mechanic Laboratory, Japan</p>
         <div className="inline-container">
           <ExternalResource link="/pdf/Report_PFE_flow_reconstruction.pdf" name="Report"/>
           <ExternalResource link="/pdf/Poster_PFE_flow_reconstruction.pdf" name="Poster"/>
@@ -35,7 +35,7 @@ function CFD() {
           <ExternalResource link="https://github.com/kz2wd/Flow-Prediction" name="Github"/>
         </div>
         
-        <p>6 months internship at Meiji University Fluid Mechanic Laboratory, Japan</p>
+        
         <img src="/images/cfd_flow_presentation.png" />
         <h4>
           My contribution:
