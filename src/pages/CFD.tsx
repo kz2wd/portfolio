@@ -45,16 +45,26 @@ function CFD() {
             <img src="/images/data_management.png" />
       
           </InfoLine>
-          <InfoLine info="Reproduced results from a reference paper [Arxiv]" > 
-            Three-dimensional generative adversarial networks for turbulent flow estimation from wall measurements
-            <ExternalResource link="https://arxiv.org/abs/2409.06548" name="Paper Arxiv"/>
+          <InfoLine info="Reproduced results from a reference paper [Arxiv]" >
+            Our research is based on Three-dimensional generative adversarial networks for turbulent flow estimation from wall measurements. <ExternalResource link="https://arxiv.org/abs/2409.06548" name="Paper Arxiv"/>
+            In our work, we were not able to load the trained model available in the referenced github of the article. We implemented the GAN architecture using PyTorch and ran experiments using data generated from a locally run solver Incompact3D.
+            The reference paper presented 4 cases with various prediction channel sizes. We chose to focus on case A which cover the full half of the simulation channel.
+            For our reference replication, we used 20K sample total dataset of dimension (20 000, 128, 64, 128) with a training of 50 epochs.
           </InfoLine>
 
-          <InfoLine info="Identified discriminator inefficiency">
-            Placeholder
+          <InfoLine info="Investigated discriminator influence">
+            One can tune the influence of the discrimimator in the GAN framework.
+            The formula for loss is: Lgan = 
+            We ran experiments with variying discrimimator influence. Interestingly, the case with a discriminator factor at 1e-2 performed for the best in far wall region and the worst near the wall.
+            This graph highlight two phenomenoms; In near wall region and up to y+ = 80, using a discriminator provides no accuracy gains and past y+ = 80, some configurations shows great improvements 
+            <div className="plot">
+              <p>Discriminator influences comparison</p>
+              <img src="/images/discriminator_influences.png" 
+              alt="Graph unavailable. "/>
+          </div>
           </InfoLine>
           <InfoLine info="Improved far-from-wall reconstruction (~10%)" >
-            Placeholder
+            After establishing a first replication of the paper, we researched ways to improve far-wall reconstruction.
           </InfoLine>
           <InfoLine info="Analyzed instability in GAN-based approaches">
             Placeholder
