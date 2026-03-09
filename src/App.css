@@ -186,7 +186,7 @@ button:hover {
 }
 
 .page-content {
-  padding: 8em 1em;
+  padding: 0em 1em;
   margin: auto;
   
 }
@@ -241,4 +241,10 @@ button:hover {
 
 .margin-4 {
   margin: 4rem;
+}
+
+h1 {
+  text-align: center;
+  padding: 4em 1em 1em;
+  color: #31a9e0;
 }

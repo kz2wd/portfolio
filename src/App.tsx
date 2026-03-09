@@ -34,6 +34,8 @@ function App() {
 
         <Home />
 
+        <h1>Projects</h1>
+
         <CFD />
 
         <HPC />
