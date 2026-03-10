@@ -36,12 +36,10 @@ function ProjectBox({info, children}: {info: React.ReactNode, children: React.Re
   );
 }
 
-function CFD() {
-
-
+export function FlowPrediction() {
   return (
     <>
-      <div className="page-content" id="projects">
+      <div className="page-content">
         <ProjectBox info={
           <div className="page-content">
             <h2>Data-driven reconstruction of wall-bounded turbulent channel flows</h2>
@@ -135,4 +133,85 @@ function CFD() {
   );
 }
 
-export default CFD
+
+export function LDCSolver() {
+  return (
+    <>
+      <div className="page-content">
+        <ProjectBox info={
+          <div className="page-content">
+            <h2>FD CFD LDC Solver</h2>
+
+            
+          <img src="/images/ldc_solver.png" />
+          </div>
+          }
+        >
+          
+        <p>Implemented a Finite Difference solver for Lid Driven Cavity case with uniform grid and various time scheme to reproduce results from Ghia & al. 1982.</p>
+
+        Time scheme used:
+        Re 100 | 400 | 1000 | 3200
+        Explicit Euler: 
+        RK2
+        RK4
+        EI ADI
+        CN ADI
+
+        Studied Pressure solving through time to reduce computation
+
+        Used Python for tests, visualizations and tracking
+        Used C for core simulation process
+        
+      </ProjectBox>
+      </div>
+      </>
+  )
+}
+
+
+
+export function PINO() {
+  return (
+    <>
+      <div className="page-content">
+        <ProjectBox info={
+          <div className="page-content">
+            <h2>Physic Induced Neural Operator Article implementation</h2>
+            <img src="/images/pin_out_lighter.gif" />
+            
+          </div>
+          }
+        >
+          <div className="page-content">
+            <img src="/images/pino_train.png" />
+         <p>Reproduced the paper Physic Induced Neural Operator on the LDC case using data generated Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </p>
+          </div>
+      </ProjectBox>
+      </div>
+      </>
+  )
+}
+
+export function GEMM() {
+  return (
+    <>
+      <div className="page-content">
+        <ProjectBox info={
+          <div className="page-content">
+            <h2>GEMM Optimization</h2>
+            <img src="/images/gemm_perfs.png" />
+            
+          </div>
+          }
+        >
+          <div className="page-content">
+         <p>
+          Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </p>
+          </div>
+      </ProjectBox>
+      </div>
+      </>
+  )
+}
+

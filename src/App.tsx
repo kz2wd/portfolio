@@ -2,8 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 
 import Home from "./pages/Home.tsx";
-import CFD from "./pages/CFD.tsx";
-import HPC from "./pages/Contact.tsx";
+import { FlowPrediction, LDCSolver, PINO, GEMM } from "./pages/CFD.tsx";
 
 import './App.css'
 
@@ -34,11 +33,17 @@ function App() {
 
         <Home />
 
-        <h1>Projects</h1>
+        <h1 id="projects">Projects</h1>
 
-        <CFD />
+        <FlowPrediction/>
 
-        <HPC />
+        <LDCSolver/>
+
+        <PINO/>
+
+        <GEMM/>
+
+
 
       </div>
       
