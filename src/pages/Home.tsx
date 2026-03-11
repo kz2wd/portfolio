@@ -14,7 +14,7 @@ function Home() {
          and large-scale numerical optimization</h3>
       
       <div className="inline-container margin-4">
-        <p><ExternalResource link="/pdf/CV_Youri_Chancrin_EN_2025.pdf" name="CV" isFull={true} /></p>
+        <p><ExternalResource link="/pdf/cv2026_chancrin_youri.pdf" name="CV" isFull={true} /></p>
         <p><ExternalResource link="https://github.com/kz2wd/" name="Github" isFull={true}/></p>
         <p><ExternalResource link="https://www.linkedin.com/in/youri-chancrin-a841b6265/" name="LinkedIn" isFull={true}/></p>
       </div>
