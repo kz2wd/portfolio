@@ -189,6 +189,10 @@ button:hover {
   padding: 0em 1em;
   margin: auto;
 }
+.page-content > * > * {
+   width: 100%;
+}
+
 
 .centered-element {
   margin: auto;
@@ -246,4 +250,13 @@ h1 {
   text-align: center;
   padding: 4em 1em 1em;
   color: #31a9e0;
+}
+
+.project {
+  padding: 3em;
+}
+
+/* TODO */
+.full-width {
+  width: 100;
 }

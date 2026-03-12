@@ -19,8 +19,10 @@ function Home() {
         <p><ExternalResource link="https://www.linkedin.com/in/youri-chancrin-a841b6265/" name="LinkedIn" isFull={true}/></p>
       </div>
       
-      <p className="copy-box inline-container-left"> Email: yourichancrin@gmail.com</p>
-      <p>Open to relocation & language learning</p>
+      <div className="centered-element">
+        <p className="copy-box"> Email: yourichancrin@gmail.com</p>
+        <p>Open to relocation & language learning</p>
+      </div>
       
       
     </div>
