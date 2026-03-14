@@ -8,20 +8,10 @@ function InfoCard({
   info: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const { getCollapseProps, getToggleProps } = useCollapse();
   return (
-    <div>
-      <button
-        {...getToggleProps()}
-        className="collapse-btn inline-container-left full-width"
-      >
-        {isExpanded ? (
-          <img src="/logos/expand_circle_down.svg" className="logo-black" />
-        ) : (
-          <img src="/logos/expand_circle_right.svg" className="logo-black" />
-        )}
-        {info}
-      </button>
+    <div className="info-card">
+      <button {...getToggleProps()}>{info}</button>
       <section {...getCollapseProps()}>{children}</section>
     </div>
   );
@@ -34,7 +24,7 @@ function ProjectBox({
   info: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const { getCollapseProps, getToggleProps } = useCollapse();
   return (
     <div>
       <button
@@ -70,120 +60,127 @@ export function FlowPrediction() {
             </div>
           }
         >
-          <div className="inline-container">
+          <div className="inline-container margin-4">
             <ExternalResource
               link="/pdf/Report_PFE_flow_reconstruction.pdf"
               name="Report"
+              isFull={false}
             />
             <ExternalResource
               link="/pdf/Poster_PFE_flow_reconstruction.pdf"
               name="Poster"
+              isFull={false}
             />
             <ExternalResource
               link="/pdf/Presentation_PFE_flow_reconstruction.pdf"
               name="Slides"
+              isFull={false}
             />
             <ExternalResource
               link="https://github.com/kz2wd/Flow-Prediction"
               name="Github"
+              isFull={false}
             />
           </div>
-
-          <InfoCard
-            info={
-              <div>
-                Implemented GAN architecture from reference paper; replicated
-                its results and explored ways to improve accuracy.
-                <img src="images/paper_context.png" />
-              </div>
-            }
-          >
-            <p>
-              Reference paper: Three-dimensional generative adversarial networks
-              for turbulent flow estimation from wall measurements{" "}
-              <ExternalResource
-                link="https://arxiv.org/abs/2409.06548"
-                name="Paper Arxiv"
-              />
-            </p>
-            Paper goal explanation...
-            <div>
-              <div className="plot">
-                <p>title</p>
-                <img
-                  src="/images/cfd_result_all.png"
-                  alt="Graph unavailable. "
+          <div className="card-panel">
+            <InfoCard
+              info={
+                <div>
+                  Implemented GAN architecture from reference paper; replicated
+                  its results and explored ways to improve accuracy.
+                  <img src="images/paper_context.png" />
+                </div>
+              }
+            >
+              <p>
+                Reference paper: Three-dimensional generative adversarial
+                networks for turbulent flow estimation from wall measurements{" "}
+                <ExternalResource
+                  link="https://arxiv.org/abs/2409.06548"
+                  name="Paper Arxiv"
+                  isFull={false}
                 />
-              </div>
-              <div className="plot">
-                <p>title</p>
-                <img
-                  src="/images/cfd_result_improvement.png"
-                  alt="Graph unavailable. The improvements are per component for case 1e-2 Discriminator
+              </p>
+              Paper goal explanation...
+              <div>
+                <div className="plot">
+                  <p>title</p>
+                  <img
+                    src="/images/cfd_result_all.png"
+                    alt="Graph unavailable. "
+                  />
+                </div>
+                <div className="plot">
+                  <p>title</p>
+                  <img
+                    src="/images/cfd_result_improvement.png"
+                    alt="Graph unavailable. The improvements are per component for case 1e-2 Discriminator
                     influence and case with input scale filtering. The best improvements range from 4 to 10% in the range of y+ = 100 to y+ = 200."
-                />
+                  />
+                </div>
               </div>
-            </div>
-          </InfoCard>
+            </InfoCard>
 
-          <InfoCard
-            info={
-              <div>
-                Investigated discriminator influence
-                <img
-                  src="/images/discriminator_influences.png"
-                  alt="Graph unavailable. "
-                />
+            <InfoCard
+              info={
+                <div>
+                  Investigated discriminator influence
+                  <img
+                    src="/images/discriminator_influences.png"
+                    alt="Graph unavailable. "
+                  />
+                </div>
+              }
+            >
+              One can tune the influence of the discrimimator in the GAN
+              framework. The formula for loss is: Lgan = We ran experiments with
+              variying discrimimator influence. Interestingly, the case with a
+              discriminator factor at 1e-2 performed for the best in far wall
+              region and the worst near the wall. This graph highlight two
+              phenomenoms; In near wall region and up to y+ = 80, using a
+              discriminator provides no accuracy gains and past y+ = 80, some
+              configurations shows great improvements
+              <div className="plot">
+                <p>Discriminator influences comparison</p>
               </div>
-            }
-          >
-            One can tune the influence of the discrimimator in the GAN
-            framework. The formula for loss is: Lgan = We ran experiments with
-            variying discrimimator influence. Interestingly, the case with a
-            discriminator factor at 1e-2 performed for the best in far wall
-            region and the worst near the wall. This graph highlight two
-            phenomenoms; In near wall region and up to y+ = 80, using a
-            discriminator provides no accuracy gains and past y+ = 80, some
-            configurations shows great improvements
-            <div className="plot">
-              <p>Discriminator influences comparison</p>
-            </div>
-          </InfoCard>
-          <InfoCard
-            info={
-              <div>
-                Enriched inputs with extracted flow patterns using scale
-                filtering
-                <img src="images/dog_illu.png" />
-              </div>
-            }
-          >
-            After establishing a first replication of the paper, we researched
-            ways to improve far-wall reconstruction. Could not combine
-            improvements from discrimimator influence tuning and scale
-            filtering, which highlights instability in GAN-based approaches.
-          </InfoCard>
+            </InfoCard>
+            <InfoCard
+              info={
+                <div>
+                  Enriched inputs with extracted flow patterns using scale
+                  filtering
+                  <img src="images/dog_illu.png" />
+                </div>
+              }
+            >
+              After establishing a first replication of the paper, we researched
+              ways to improve far-wall reconstruction. Could not combine
+              improvements from discrimimator influence tuning and scale
+              filtering, which highlights instability in GAN-based approaches.
+            </InfoCard>
 
-          <InfoCard
-            info={
-              <div>
-                Generated datasets using Incompact3D with dimensions (20 000,
-                128, 64, 128, 3). Built full CFD → dataset → training →
-                evaluation pipeline
-                <img src="/images/data_management.png" />
-              </div>
-            }
-          >
-            <ul>
-              <li>Environment: Python, Jupyter, Docker, SSH</li>
-              <li>Visualization: Paraview, VTK, Dash (Plotly), Seaborn</li>
-              <li>
-                Data: S3 MinIO, PostGreSQL, SQLAlchemy, Numpy, Dask, Scipy, Zarr
-              </li>
-              <li>ML: TensorFlow, PyTorch, mlflow</li>
-              <li>CFD: XCompact3D</li>
-            </ul>
-          </InfoCard>
+            <InfoCard
+              info={
+                <div>
+                  Generated datasets using Incompact3D with dimensions (20 000,
+                  128, 64, 128, 3). Built full CFD → dataset → training →
+                  evaluation pipeline
+                  <img src="/images/data_management.png" />
+                </div>
+              }
+            >
+              <ul>
+                <li>Environment: Python, Jupyter, Docker, SSH</li>
+                <li>Visualization: Paraview, VTK, Dash (Plotly), Seaborn</li>
+                <li>
+                  Data: S3 MinIO, PostGreSQL, SQLAlchemy, Numpy, Dask, Scipy,
+                  Zarr
+                </li>
+                <li>ML: TensorFlow, PyTorch, mlflow</li>
+                <li>CFD: XCompact3D</li>
+              </ul>
+            </InfoCard>
+          </div>
         </ProjectBox>
       </div>
     </>
@@ -213,7 +210,7 @@ export function LDCSolver() {
             Ghia & al. 1982.
           </p>
           <InfoCard info="Time scheme Comparison table">
-            <table border="1">
+            <table border={1}>
               <thead>
                 <tr>
                   <th>Time scheme \ RE</th>

@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import HoverVideo from "./pages/AnimatedVid.tsx";
 
@@ -20,12 +20,18 @@ function App() {
         <div>
           <Link to="/">
             <HoverVideo />
-            {/*<img src="/logos/YC_logo_filled.svg" alt="My Logo :D" id="logo" />*/}
           </Link>
           <Link to="/" id="name" className="vast-shadow-regular">
-            <span>You</span>
-            <span>ri</span> <span>Chan</span>
-            <span>crin</span>
+            <div className="inline-container">
+              <div>
+                <span>You</span>
+                <span>ri</span>
+              </div>
+              <div>
+                <span>Chan</span>
+                <span>crin</span>
+              </div>
+            </div>
           </Link>
           <nav>
             <HashLink to="/#projects">Projects</HashLink>

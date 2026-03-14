@@ -213,6 +213,7 @@ button:hover {
 .interest * {
     color: #818181;
     transition: all 500ms;
+    margin: 0;
 }
 
 .interest *:hover {
@@ -258,4 +259,37 @@ h1 {
 
 .separate-children > * {
     margin: 1em 2em;
+}
+
+.info-card {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 260px;
+}
+
+.info-card-full {
+    flex: 1 1 100%;
+    min-width: 260px;
+}
+
+.info-card > *,
+.info-card-full > * {
+    background-color: white;
+    color: black;
+}
+
+.info-card img,
+.info-card-full img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.interest > li:hover {
+    font-weight: 400;
+    color: black;
 }
