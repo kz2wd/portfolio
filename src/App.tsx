@@ -3,7 +3,13 @@ import { HashLink } from "react-router-hash-link";
 import HoverVideo from "./pages/AnimatedVid.tsx";
 
 import Home from "./pages/Home.tsx";
-import { FlowPrediction, LDCSolver, PINO, GEMM } from "./pages/CFD.tsx";
+import {
+  FlowPrediction,
+  LDCSolver,
+  PINO,
+  GEMM,
+  FlowPrediction2,
+} from "./pages/CFD.tsx";
 
 import "./App.css";
 
@@ -43,6 +49,8 @@ function App() {
         <Home />
 
         <h1 id="projects">Projects</h1>
+
+        <FlowPrediction2 />
 
         <FlowPrediction />
 

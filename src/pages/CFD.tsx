@@ -1,5 +1,6 @@
 import { ExternalResource } from "./Utils";
 import { useCollapse } from "react-collapsed";
+import { useState } from "react";
 
 function InfoCard({
   info,
@@ -36,6 +37,32 @@ function ProjectBox({
       <section className="project-detailed-area" {...getCollapseProps()}>
         {children}
       </section>
+    </div>
+  );
+}
+
+type Slide = {
+  title: string;
+  content: React.ReactNode;
+};
+
+function ProjectCard({ slides }: { slides: Slide[] }) {
+  const [i, setI] = useState(0);
+
+  const next = () => setI((i + 1) % slides.length);
+  const prev = () => setI((i - 1 + slides.length) % slides.length);
+
+  return (
+    <div className="card">
+      <div className="slide">
+        <h3>{slides[i].title}</h3>
+        {slides[i].content}
+      </div>
+
+      <div className="zones">
+        <div className="left" onClick={prev} />
+        <div className="right" onClick={next} />
+      </div>
     </div>
   );
 }
@@ -182,6 +209,36 @@ export function FlowPrediction() {
             </InfoCard>
           </div>
         </ProjectBox>
+      </div>
+    </>
+  );
+}
+
+export function FlowPrediction2() {
+  const slides: Slide[] = [
+    {
+      title:
+        "Data-driven reconstruction of wall-bounded turbulent channel flows",
+      content: (
+        <>
+          <img src="/images/cfd_flow_presentation.png" />
+        </>
+      ),
+    },
+    {
+      title:
+        "Replicated results from reference paper: arXiv:2409.06548, A. Cuéllar and others. Explored strategies to improve predictions accuracy",
+      content: (
+        <>
+          <img src="/images/cfd_result_all.png" alt="Graph unavailable. " />
+        </>
+      ),
+    },
+  ];
+  return (
+    <>
+      <div className="page-content project">
+        <ProjectCard slides={slides} />
       </div>
     </>
   );

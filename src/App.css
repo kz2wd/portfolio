@@ -293,3 +293,26 @@ h1 {
     font-weight: 400;
     color: black;
 }
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.zones {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.left {
+    cursor: w-resize;
+}
+.right {
+    cursor: e-resize;
+}
