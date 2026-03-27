@@ -42,29 +42,20 @@ function ProjectBox({
 }
 
 function ProjectCard({ slides }: { slides: React.ReactNode[] }) {
-  const [i, setI] = useState(0);
+  const [progress, setProgress] = useState(0.0);
 
-  const next = () => setI((i + 1) % slides.length);
-  const prev = () => setI((i - 1 + slides.length) % slides.length);
+  const next = () => setProgress((Math.floor(progress) + 1) % slides.length);
+  const prev = () => setProgress((Math.ceil(progress) - 1 + slides.length) % slides.length);
 
   return (
-    <div className="card">
-      <div className="slide">
-        <div className="viewport">
-          <div
-            className="track"
-            style={{ transform: `translateX(-${i * 100}%)` }}
-          >
-            {slides.map((s, idx) => (
-              <div className="slide" key={idx}>{s}</div>
-            ))}
+    <div className="carousel">
+      <div className="arrow left"/>
+        <div className="track">
+          <div className="card">
+            {slides[0]}
           </div>
         </div>
-      </div>
-      <div className="zones">
-        <div className="left" onClick={prev} />
-        <div className="right" onClick={next} />
-      </div>
+      <div className="arrow right"/>
     </div>
   );
 }
@@ -200,9 +191,9 @@ export function FlowPrediction2() {
         Data-driven reconstruction of wall-bounded turbulent channel flows
       </h2>
       <p>
-                6 months internship at Meiji University Fluid Mechanic
-                Laboratory, Japan
-              </p>
+        6 months internship at Meiji University Fluid Mechanic
+        Laboratory, Japan
+      </p>
       <img src="/images/cfd_flow_presentation.png" />
     </>
     ,
@@ -279,7 +270,7 @@ export function FlowPrediction2() {
 
   return (
     <>
-      <div className="page-content project">
+      <div className="">
         <ProjectCard slides={slides} />
       </div>
     </>
