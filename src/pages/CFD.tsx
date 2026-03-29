@@ -1,276 +1,156 @@
 import { ExternalResource } from "./Utils";
-import { useCollapse } from "react-collapsed";
 import { useState } from "react";
-
-function InfoCard({
-  info,
-  children,
-}: {
-  info: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  const { getCollapseProps, getToggleProps } = useCollapse();
-  return (
-    <div className="info-card">
-      <button {...getToggleProps()}>{info}</button>
-      <section {...getCollapseProps()}>{children}</section>
-    </div>
-  );
-}
-
-function ProjectBox({
-  info,
-  children,
-}: {
-  info: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  const { getCollapseProps, getToggleProps } = useCollapse();
-  return (
-    <div>
-      <button
-        {...getToggleProps()}
-        className="collapse-btn inline-container-left"
-      >
-        {info}
-      </button>
-      <section className="project-detailed-area" {...getCollapseProps()}>
-        {children}
-      </section>
-    </div>
-  );
-}
 
 function ProjectCard({ slides }: { slides: React.ReactNode[] }) {
   const [progress, setProgress] = useState(0.0);
 
   const next = () => setProgress((Math.floor(progress) + 1) % slides.length);
-  const prev = () => setProgress((Math.ceil(progress) - 1 + slides.length) % slides.length);
+  const prev = () =>
+    setProgress((Math.ceil(progress) - 1 + slides.length) % slides.length);
 
   return (
-    <div className="carousel">
-      <div className="arrow left"/>
-        <div className="track">
-          <div className="card">
-            {slides[0]}
-          </div>
+    <div className="carousel vbox hfull">
+      <div className="hbox hfull">
+        <div className="arrow left" onClick={prev}>
+          <img src="/logos/arrow.svg" />
         </div>
-      <div className="arrow right"/>
+        <div className="track hfull">
+          <div className="card vbox">{slides[Math.floor(progress)]}</div>
+        </div>
+        <div className="arrow right" onClick={next}>
+          <img src="/logos/arrow.svg" />
+        </div>
+      </div>
+      <div className="hbox">
+        {slides.map((_, i) => (
+          <div
+            className={`progress-dot ${i == Math.floor(progress) ? "current" : ""}`}
+            onClick={() => setProgress(i)}
+            key={i}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export function FlowPrediction() {
-  return (
-    <>
-      <div className="page-content project">
-        <ProjectBox
-          info={
-            <div className="page-content">
-              <h2>
-                Data-driven reconstruction of wall-bounded turbulent channel
-                flows
-              </h2>
-              <p>
-                6 months internship at Meiji University Fluid Mechanic
-                Laboratory, Japan
-              </p>
-
-              <img src="/images/cfd_flow_presentation.png" />
-            </div>
-          }
-        >
-          
-          <div className="card-panel">
-            <InfoCard
-              info={
-                <div>
-                  Implemented GAN architecture from reference paper; replicated
-                  its results and explored ways to improve accuracy.
-                  <img src="images/paper_context.png" />
-                </div>
-              }
-            >
-              <p>
-                Reference paper: Three-dimensional generative adversarial
-                networks for turbulent flow estimation from wall measurements{" "}
-                <ExternalResource
-                  link="https://arxiv.org/abs/2409.06548"
-                  name="Paper Arxiv"
-                  isFull={false}
-                />
-              </p>
-              Paper goal explanation...
-              <div>
-                <div className="plot">
-                  <p>title</p>
-                  <img
-                    src="/images/cfd_result_all.png"
-                    alt="Graph unavailable. "
-                  />
-                </div>
-                <div className="plot">
-                  <p>title</p>
-                  <img
-                    src="/images/cfd_result_improvement.png"
-                    alt="Graph unavailable. The improvements are per component for case 1e-2 Discriminator
-                    influence and case with input scale filtering. The best improvements range from 4 to 10% in the range of y+ = 100 to y+ = 200."
-                  />
-                </div>
-              </div>
-            </InfoCard>
-
-            <InfoCard
-              info={
-                <div>
-                  Investigated discriminator influence
-                  <img
-                    src="/images/discriminator_influences.png"
-                    alt="Graph unavailable. "
-                  />
-                </div>
-              }
-            >
-              One can tune the influence of the discrimimator in the GAN
-              framework. The formula for loss is: Lgan = We ran experiments with
-              variying discrimimator influence. Interestingly, the case with a
-              discriminator factor at 1e-2 performed for the best in far wall
-              region and the worst near the wall. This graph highlight two
-              phenomenoms; In near wall region and up to y+ = 80, using a
-              discriminator provides no accuracy gains and past y+ = 80, some
-              configurations shows great improvements
-              <div className="plot">
-                <p>Discriminator influences comparison</p>
-              </div>
-            </InfoCard>
-            <InfoCard
-              info={
-                <div>
-                  Enriched inputs with extracted flow patterns using scale
-                  filtering
-                  <img src="images/dog_illu.png" />
-                </div>
-              }
-            >
-              After establishing a first replication of the paper, we researched
-              ways to improve far-wall reconstruction. Could not combine
-              improvements from discrimimator influence tuning and scale
-              filtering, which highlights instability in GAN-based approaches.
-            </InfoCard>
-
-            <InfoCard
-              info={
-                <div>
-                  
-                  <img src="/images/data_management.png" />
-                </div>
-              }
-            >
-              <ul>
-                <li>Environment: Python, Jupyter, Docker, SSH</li>
-                <li>Visualization: Paraview, VTK, Dash (Plotly), Seaborn</li>
-                <li>
-                  Data: S3 MinIO, PostGreSQL, SQLAlchemy, Numpy, Dask, Scipy,
-                  Zarr
-                </li>
-                <li>ML: TensorFlow, PyTorch, mlflow</li>
-                <li>CFD: XCompact3D</li>
-              </ul>
-            </InfoCard>
-          </div>
-        </ProjectBox>
-      </div>
-    </>
-  );
-}
-
-export function FlowPrediction2() {
   const slides: React.ReactNode[] = [
     <>
-      <h2>
-        Data-driven reconstruction of wall-bounded turbulent channel flows
-      </h2>
       <p>
-        6 months internship at Meiji University Fluid Mechanic
-        Laboratory, Japan
+        6 months internship at Meiji University Fluid Mechanic Laboratory, Japan
       </p>
-      <img src="/images/cfd_flow_presentation.png" />
-    </>
-    ,
+      <div className="card-content">
+        <img src="/images/cfd_flow_presentation.png" />
+      </div>
+    </>,
     <>
       <h3>
-        Replicated results from reference paper arXiv:2409.06548, A. Cuéllar and others and explored strategies to improve predictions accuracy
+        Replicated results from reference paper arXiv:2409.06548, A. Cuéllar and
+        others and explored strategies to improve predictions accuracy
       </h3>
-      <img src="/images/cfd_result_all.png" alt="Graph unavailable. " />
-      <div className="inline-container margin-4">
-            <ExternalResource
-              link="/pdf/Report_PFE_flow_reconstruction.pdf"
-              name="Report"
-              isFull={false}
-            />
-            <ExternalResource
-              link="/pdf/Poster_PFE_flow_reconstruction.pdf"
-              name="Poster"
-              isFull={false}
-            />
-            <ExternalResource
-              link="/pdf/Presentation_PFE_flow_reconstruction.pdf"
-              name="Slides"
-              isFull={false}
-            />
-            <ExternalResource
-              link="https://github.com/kz2wd/Flow-Prediction"
-              name="Github"
-              isFull={false}
-            />
-          </div>
-    </>
-    ,
+      <div className="card-content">
+        <img src="/images/cfd_result_all.png" alt="Graph unavailable. " />
+        <div className="inline-container margin-4">
+          <ExternalResource
+            link="/pdf/Report_PFE_flow_reconstruction.pdf"
+            name="Report"
+            isFull={false}
+          />
+          <ExternalResource
+            link="/pdf/Poster_PFE_flow_reconstruction.pdf"
+            name="Poster"
+            isFull={false}
+          />
+          <ExternalResource
+            link="/pdf/Presentation_PFE_flow_reconstruction.pdf"
+            name="Slides"
+            isFull={false}
+          />
+          <ExternalResource
+            link="https://github.com/kz2wd/Flow-Prediction"
+            name="Github"
+            isFull={false}
+          />
+        </div>
+      </div>
+    </>,
     <>
-      <h3>
-        Discriminator influence tuning
-      </h3>
-      <p>
-        Predictions are produced using a Generative Adversarial Network (GAN) where a Discriminator adds a penalty to the Generator loss during training.
-      </p>
-      <img src="/images/gan_illu.png" />
-      <p>By tweaking the influence of the discriminator penalty, we obtain various behaviors in the generator.</p>
-      <img
-        src="/images/discriminator_influences.png"
-        alt="Graph unavailable. "
-      />
-      <p>In the near wall region and up to y+ = 80, using a discriminator provides no accuracy gains and past y+ = 80, a factor of 1e-2 shows improvements of up to 10%.</p>
-    </>
-    ,
+      <h3>Discriminator influence tuning</h3>
+      <div className="card-content">
+        <p>
+          Predictions are produced using a Generative Adversarial Network (GAN)
+          where a Discriminator adds a penalty to the Generator loss during
+          training.
+        </p>
+        <img src="/images/gan_illu.png" />
+        <p>
+          By tweaking the influence of the discriminator penalty, we obtain
+          various behaviors in the generator.
+        </p>
+        <img
+          src="/images/discriminator_influences.png"
+          alt="Graph unavailable. "
+        />
+        <p>
+          In the near wall region and up to y+ = 80, using a discriminator
+          provides no accuracy gains and past y+ = 80, a factor of 1e-2 shows
+          improvements of up to 10%.
+        </p>
+      </div>
+    </>,
     <>
       <h3>
         Enriched inputs with extracted flow patterns using scale filtering
       </h3>
-      <p>Near wall regions have intensive high frequency patterns that hide the low frequency patterns that better correlate with the far from wall regions.</p>
-      <img src="images/dog_illu.png" />
-      <p>Use of Difference of Gaussian (DoG) filter reveals low frequency pattern in the input.</p>
-      <img src="images/dog_wide.png" />
-      <p>DoG has two parameters which describe the allure of the subtracted gaussians.</p>
-      <img src="images/scale_filtering_corr.png" />
-      <p>For each input and output component pairs and at each wall distance y+ in the prediction space, a bayesian optimization is performed to find the filter with the best correlation.</p>
-      <img src="images/scale_filtering_clustering.png" />
-      <p>This results in many filters (3 input components * 3 output components * 64 distances =  576) , many of which are similar. Clusterization selects the final set of filters.</p>
-    </>
-    ,
-     <>
-      <h3>
-        Research environment setup
-      </h3>
-      <img src="/images/data_management.png" />
-      <p>Generated datasets using Incompact3D with dimensions (20 000, 128, 64, 128, 3). Built full CFD → dataset → training → evaluation pipeline</p>
-    </>
-    ,
-
+      <div className="card-content">
+        <p>
+          Near wall regions have intensive high frequency patterns that hide the
+          low frequency patterns that better correlate with the far from wall
+          regions.
+        </p>
+        <img src="images/dog_illu.png" />
+        <p>
+          Use of Difference of Gaussian (DoG) filter reveals low frequency
+          pattern in the input.
+        </p>
+        <img src="images/dog_wide.png" />
+        <p>
+          DoG has two parameters which describe the allure of the subtracted
+          gaussians.
+        </p>
+        <img src="images/scale_filtering_corr.png" />
+        <p>
+          For each input and output component pairs and at each wall distance y+
+          in the prediction space, a bayesian optimization is performed to find
+          the filter with the best correlation.
+        </p>
+        <img src="images/scale_filtering_clustering.png" />
+        <p>
+          This results in many filters (3 input components * 3 output components
+          * 64 distances = 576) , many of which are similar. Clusterization
+          selects the final set of filters.
+        </p>
+      </div>
+    </>,
+    <>
+      <h3>Research environment setup</h3>
+      <div className="card-content">
+        <img src="/images/data_management.png" />
+        <p>
+          Generated datasets using Incompact3D with dimensions (20 000, 128, 64,
+          128, 3). Built full CFD → dataset → training → evaluation pipeline
+        </p>
+      </div>
+    </>,
   ];
 
   return (
     <>
-      <div className="">
+      <div className="vbox page-content">
+        <h2>
+          Data-driven reconstruction of wall-bounded turbulent channel flows
+        </h2>
         <ProjectCard slides={slides} />
       </div>
     </>
@@ -278,121 +158,125 @@ export function FlowPrediction2() {
 }
 
 export function LDCSolver() {
+  const slides: React.ReactNode[] = [
+    <>
+      <div className="card-content">
+        <p>
+          Implemented a Finite Difference solver for Lid Driven Cavity case with
+          uniform grid and various time schemes. Equation constraints are based
+          on Incompressible Navier Stokes with no external body force and
+          uniform viscosity.
+        </p>
+        <img src="/images/ldcs_pres.png" />
+        <p>Velocity, pressure and velocity norm at Re=1000.</p>
+      </div>
+    </>,
+    <>
+      <div className="card-content">
+        <p>Built a run monitor panel</p>
+        <img src="/images/ldc_solver.png" />
+      </div>
+    </>,
+  ];
+
   return (
     <>
-      <div className="page-content project">
-        <ProjectBox
-          info={
-            <div className="page-content">
-              <h2>Finite Difference Incompressible Lid-Driven Cavity Solver</h2>
-              <p>
-                Re: 100 - 3200 | uniform grid: (64x64) - (256x256) | dt: 1e-3 -
-                1e-4
-              </p>
-
-              <img src="/images/ldc_solver.png" />
-            </div>
-          }
-        >
-          <p>
-            Implemented a Finite Difference solver for Lid Driven Cavity case
-            with uniform grid and various time scheme to reproduce results from
-            Ghia & al. 1982.
-          </p>
-          <InfoCard info="Time scheme Comparison table">
-            <table border={1}>
-              <thead>
-                <tr>
-                  <th>Time scheme \ RE</th>
-                  <th>100</th>
-                  <th>400</th>
-                  <th>1000</th>
-                  <th>3200</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Explicit Euler</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                  <td>❌</td>
-                  <td>❌</td>
-                </tr>
-                <tr>
-                  <td>RK2</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                  <td>❌</td>
-                  <td>❌</td>
-                </tr>
-                <tr>
-                  <td>RK4</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                </tr>
-                <tr>
-                  <td>IMEX (CN/EI ADI)</td>
-                  <td>❌</td>
-                  <td>✅</td>
-                  <td>✅</td>
-                  <td>❌</td>
-                </tr>
-              </tbody>
-            </table>
-          </InfoCard>
-          Studied Pressure solving through time to reduce computation Used
-          Python for tests, visualizations and tracking Used C for core
-          simulation process
-        </ProjectBox>
+      <div className="vbox">
+        <h2>Finite Difference Incompressible Lid-Driven Cavity Solver</h2>
+        <ProjectCard slides={slides} />
       </div>
     </>
   );
 }
 
 export function PINO() {
+  const slides: React.ReactNode[] = [
+    <>
+      <div className="card-content">
+        <img src="/images/pin_out_lighter.gif" />
+      </div>
+    </>,
+    <>
+      <h3>Network architecture</h3>
+      <div className="card-content">
+        {/*<img src="/images/pin_out_lighter.gif" />*/}
+        <p></p>
+      </div>
+    </>,
+    <>
+      <h3>Dataset creation and analysis</h3>
+      <div className="card-content">
+        <p>
+          The dataset consist of 100 samples with shape: X (batch, x dim, y dim,
+          3) to Y (batch, Time dimension, x dim, y dim, 3) with 3 the amount
+          components: u and v velocity + pressure.
+        </p>
+        <p>
+          All the dataset samples were generated using my previous LDC Solver at
+          Re=500 with random initial conditions. Since the system is convergent,
+          Variance and PCA analysis are performed to attest of the dataset
+          problem representability.
+        </p>
+        <img src="/images/pino_var_over_t.png" />
+        <p>
+          Variance over time increases, meaning that simulations states diverge
+          over time, which indicates that the initial states are different
+          enough.
+        </p>
+        <img src="/images/pino_pca.png" />
+        <p>
+          PCA is used to visualize the spread of the samples. Since Y has higher
+          dimensionality, it is expected to be more spread. This normal-like
+          distribution is a sign of a healthy dataset.
+        </p>
+        <p>
+          Additionnaly, the linear predictability score of the dataset between X
+          and PCA Y is computed; we find a score of 1.0, which means all sample
+          of PCA Y could be linked to a single input X.
+        </p>
+      </div>
+    </>,
+  ];
   return (
     <>
-      <div className="page-content project">
-        <ProjectBox
-          info={
-            <div className="page-content">
-              <h2>Physics-Informed Neural Operator Article implementation</h2>
-              <img src="/images/pin_out_lighter.gif" />
-            </div>
-          }
-        >
-          <div className="page-content">
-            <img src="/images/pino_train.png" />
-            <p>
-              Reproduced the paper Physics-Informed Neural Operator for Learning
-              Partial Differential Equations on the LDC case using data
-              generated
-            </p>
-          </div>
-        </ProjectBox>
+      <div className="vbox">
+        <h2>Physic Informed Neural Operator (PINO) Article Implementation</h2>
+        <ProjectCard slides={slides} />
       </div>
     </>
   );
 }
 
 export function GEMM() {
+  const slides: React.ReactNode[] = [
+    <>
+      <div className="card-content">
+        <img src="/images/gemm_comp.png" />
+        <p>
+          Replicated up to 80% performance of locally compiled OpenBLAS, speed
+          up of up to 10 times compared to naive implementation.
+        </p>
+      </div>
+    </>,
+    <>
+      <div className="card-content">
+        <img src="/images/gemm_exca_illu.png" />
+        <p>
+          Matrices are split into blocks. Blocks from matrices A and B are
+          packed according to internal kernel needs. Block sizes are chosen to
+          fit in L2 cache but computationally intense enough to cover memory
+          bandwidth latency (ratio of ~100 compute per memory read). The
+          internal kernel accumulates C in AVX2 registers and broadcasts A along
+          B.
+        </p>
+      </div>
+    </>,
+  ];
   return (
     <>
-      <div className="page-content project">
-        <ProjectBox
-          info={
-            <div className="page-content">
-              <h2>GEMM Optimization</h2>
-              <img src="/images/gemm_perfs.png" />
-            </div>
-          }
-        >
-          <div className="page-content">
-            <p></p>
-          </div>
-        </ProjectBox>
+      <div className="vbox">
+        <h2>GEneral Matrix Multiplication (GEMM) Optimization</h2>
+        <ProjectCard slides={slides} />
       </div>
     </>
   );

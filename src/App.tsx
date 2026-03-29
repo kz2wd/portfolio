@@ -3,13 +3,7 @@ import { HashLink } from "react-router-hash-link";
 import HoverVideo from "./pages/AnimatedVid.tsx";
 
 import Home from "./pages/Home.tsx";
-import {
-  FlowPrediction,
-  LDCSolver,
-  PINO,
-  GEMM,
-  FlowPrediction2,
-} from "./pages/CFD.tsx";
+import { FlowPrediction, LDCSolver, PINO, GEMM } from "./pages/CFD.tsx";
 
 import "./App.css";
 
@@ -28,12 +22,12 @@ function App() {
             <HoverVideo />
           </Link>
           <Link to="/" id="name" className="vast-shadow-regular">
-            <div className="inline-container">
-              <div>
+            <div className="inline-container hspaced">
+              <div className="inline-container-strict">
                 <span>You</span>
                 <span>ri</span>
               </div>
-              <div>
+              <div className="inline-container-strict">
                 <span>Chan</span>
                 <span>crin</span>
               </div>
@@ -50,15 +44,17 @@ function App() {
 
         <h1 id="projects">Projects</h1>
 
-        <FlowPrediction2 />
-
         <FlowPrediction />
+        <div className="project-separator"></div>
 
         <LDCSolver />
+        <div className="project-separator"></div>
 
         <PINO />
+        <div className="project-separator"></div>
 
         <GEMM />
+        <div className="project-separator"></div>
       </div>
 
       {/* <Routes>

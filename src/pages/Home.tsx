@@ -4,7 +4,7 @@ function Home() {
   return (
     <>
       <div className="width-1 page-content">
-        <ul className="interest margin-4">
+        <ul className="interest margin-4 inline-container">
           <li>HPC</li>
           <li>CFD</li>
           <li>ML</li>

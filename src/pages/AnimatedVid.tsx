@@ -24,8 +24,9 @@ export default function HoverVideo() {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       style={{ width: 75 }}
+      id="animated-logo"
     >
-      <source src="/logos/logo_anim.webm" type="video/webm" />
+      <source src="/logos/logo_anim2.webm" type="video/webm" />
     </video>
   );
 }

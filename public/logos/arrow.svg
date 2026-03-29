@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="600"
+   viewBox="0 0 200 600"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="arrow.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4342733"
+     inkscape:cx="237.40246"
+     inkscape:cy="240.19133"
+     inkscape:window-width="2560"
+     inkscape:window-height="1406"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="0,79.375002"
+       orientation="0,793.70079"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="210,79.375002"
+       orientation="1122.5197,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="210,-217.625"
+       orientation="0,-793.70079"
+       id="guide3"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,-217.625"
+       orientation="-1122.5197,0"
+       id="guide4"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <rect
+       x="139.02798"
+       y="297.77625"
+       width="67.04895"
+       height="72.965034"
+       id="rect9" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke-width:0.807844;stroke-dasharray:none"
+       id="rect10-2"
+       width="70.588333"
+       height="322.5047"
+       x="-70.640686"
+       y="0.025106765"
+       transform="matrix(-1,0,0.3647923,0.93108892,0,0)" />
+    <rect
+       style="fill:#000000;stroke-width:0.8075"
+       id="rect10-2-5-3"
+       width="70.588333"
+       height="322.5047"
+       x="235.29256"
+       y="322.17856"
+       transform="matrix(1,0,-0.3647923,0.93108892,0,0)" />
+    <rect
+       style="fill:#000000;stroke-width:1.37197;stroke-dasharray:none"
+       id="rect4"
+       width="70.070328"
+       height="2.9631732"
+       x="117.4811"
+       y="298.58325" />
+  </g>
+</svg>
