@@ -41,7 +41,7 @@ export function FlowPrediction() {
         6 months internship at Meiji University Fluid Mechanic Laboratory, Japan
       </p>
       <div className="card-content">
-        <img src="/images/cfd_flow_presentation.png" />
+        <img src="/images/pred/cfd_flow_presentation.png" />
       </div>
     </>,
     <>
@@ -50,7 +50,7 @@ export function FlowPrediction() {
         others and explored strategies to improve predictions accuracy
       </h3>
       <div className="card-content">
-        <img src="/images/cfd_result_all.png" alt="Graph unavailable. " />
+        <img src="/images/pred/cfd_result_all.png" alt="Graph unavailable. " />
         <div className="inline-container margin-4">
           <ExternalResource
             link="/pdf/Report_PFE_flow_reconstruction.pdf"
@@ -83,13 +83,13 @@ export function FlowPrediction() {
           where a Discriminator adds a penalty to the Generator loss during
           training.
         </p>
-        <img src="/images/gan_illu.png" />
+        <img src="/images/pred/gan_illu.png" />
         <p>
           By tweaking the influence of the discriminator penalty, we obtain
           various behaviors in the generator.
         </p>
         <img
-          src="/images/discriminator_influences.png"
+          src="/images/pred/discriminator_influences.png"
           alt="Graph unavailable. "
         />
         <p>
@@ -109,23 +109,23 @@ export function FlowPrediction() {
           low frequency patterns that better correlate with the far from wall
           regions.
         </p>
-        <img src="images/dog_illu.png" />
+        <img src="images/pred/dog_illu.png" />
         <p>
           Use of Difference of Gaussian (DoG) filter reveals low frequency
           pattern in the input.
         </p>
-        <img src="images/dog_wide.png" />
+        <img src="images/pred/dog_wide.png" />
         <p>
           DoG has two parameters which describe the allure of the subtracted
           gaussians.
         </p>
-        <img src="images/scale_filtering_corr.png" />
+        <img src="images/pred/scale_filtering_corr.png" />
         <p>
           For each input and output component pairs and at each wall distance y+
           in the prediction space, a bayesian optimization is performed to find
           the filter with the best correlation.
         </p>
-        <img src="images/scale_filtering_clustering.png" />
+        <img src="images/pred/scale_filtering_clustering.png" />
         <p>
           This results in many filters (3 input components * 3 output components
           * 64 distances = 576) , many of which are similar. Clusterization
@@ -136,7 +136,7 @@ export function FlowPrediction() {
     <>
       <h3>Research environment setup</h3>
       <div className="card-content">
-        <img src="/images/data_management.png" />
+        <img src="/images/pred/data_management.png" />
         <p>
           Generated datasets using Incompact3D with dimensions (20 000, 128, 64,
           128, 3). Built full CFD → dataset → training → evaluation pipeline
@@ -167,14 +167,30 @@ export function LDCSolver() {
           on Incompressible Navier Stokes with no external body force and
           uniform viscosity.
         </p>
-        <img src="/images/ldcs_pres.png" />
+        <img src="/images/ldc/ldcs_pres.png" />
         <p>Velocity, pressure and velocity norm at Re=1000.</p>
+      </div>
+    </>,
+    <>
+      <h3>Correctness & validation</h3>
+      <div className="card-content">
+        <p>
+          Upon reaching steadiness, velocity profiles are compared with
+          references from Ghia & al. 82.
+        </p>
+        <img src="/images/ldc/ldc_comp_re100.png" />
+        <img src="/images/ldc/ldc_comp_re400.png" />
+        <img src="/images/ldc/ldc_comp_re1000.png" />
+        <p>
+          Cases tested up to Re=1000 shows similar velocity profiles with
+          relative loss ranging from 4 to 2%.
+        </p>
       </div>
     </>,
     <>
       <div className="card-content">
         <p>Built a run monitor panel</p>
-        <img src="/images/ldc_solver.png" />
+        <img src="/images/ldc/ldc_solver.png" />
       </div>
     </>,
   ];
@@ -193,13 +209,13 @@ export function PINO() {
   const slides: React.ReactNode[] = [
     <>
       <div className="card-content">
-        <img src="/images/pin_out_lighter.gif" />
+        <img src="/images/pino/pin_out_lighter.gif" />
       </div>
     </>,
     <>
       <h3>Network architecture</h3>
       <div className="card-content">
-        {/*<img src="/images/pin_out_lighter.gif" />*/}
+        <img src="/images/pino/pino_network.png" />
         <p></p>
       </div>
     </>,
@@ -217,13 +233,13 @@ export function PINO() {
           Variance and PCA analysis are performed to attest of the dataset
           problem representability.
         </p>
-        <img src="/images/pino_var_over_t.png" />
+        <img src="/images/pino/pino_var_over_t.png" />
         <p>
           Variance over time increases, meaning that simulations states diverge
           over time, which indicates that the initial states are different
           enough.
         </p>
-        <img src="/images/pino_pca.png" />
+        <img src="/images/pino/pino_pca.png" />
         <p>
           PCA is used to visualize the spread of the samples. Since Y has higher
           dimensionality, it is expected to be more spread. This normal-like
@@ -251,7 +267,7 @@ export function GEMM() {
   const slides: React.ReactNode[] = [
     <>
       <div className="card-content">
-        <img src="/images/gemm_comp.png" />
+        <img src="/images/gemm/gemm_comp.png" />
         <p>
           Replicated up to 80% performance of locally compiled OpenBLAS, speed
           up of up to 10 times compared to naive implementation.
@@ -260,7 +276,7 @@ export function GEMM() {
     </>,
     <>
       <div className="card-content">
-        <img src="/images/gemm_exca_illu.png" />
+        <img src="/images/gemm/gemm_exca_illu.png" />
         <p>
           Matrices are split into blocks. Blocks from matrices A and B are
           packed according to internal kernel needs. Block sizes are chosen to
