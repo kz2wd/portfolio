@@ -377,6 +377,13 @@ h1 {
     /*max-width: 1200px;*/
 }
 
+.carousel img {
+    object-fit: contain;
+    /* flex: 1 1 0; */
+    min-width: 0;
+}
+
+
 .arrow {
     width: 3em;
     padding: 30px 5px;
@@ -385,13 +392,8 @@ h1 {
     filter: invert(97%) sepia(1%) saturate(1157%) hue-rotate(236deg)
         brightness(120%) contrast(80%);
     transition: 450ms;
-    /*width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    cursor: pointer;
-    /*padding: 1em;*/
-    /* height: 100%; */
+    opacity: 0;
+    transition: opacity 0.7s ease;
 }
 .arrow:hover {
     filter: invert(98%) sepia(0%) saturate(1155%) hue-rotate(258deg)
@@ -401,6 +403,10 @@ h1 {
 }
 .arrow.left {
     transform: rotate(180deg);
+}
+
+.carousel:hover .arrow {
+    opacity: 1;
 }
 
 .progress-dot {
@@ -421,4 +427,23 @@ h1 {
 
 .project-separator {
     margin: 10em;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.5);
 }

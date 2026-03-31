@@ -161,6 +161,7 @@ export function LDCSolver() {
   const slides: React.ReactNode[] = [
     <>
       <div className="card-content">
+        <div className="vbox">
         <p>
           Implemented a Finite Difference solver for Lid Driven Cavity case with
           uniform grid and various time schemes. Equation constraints are based
@@ -169,18 +170,29 @@ export function LDCSolver() {
         </p>
         <img src="/images/ldc/ldcs_pres.png" />
         <p>Velocity, pressure and velocity norm at Re=1000.</p>
+        <div className="inline-container">
+          <ExternalResource
+            link="https://github.com/kz2wd/CFD-Solver"
+            name="Github"
+            isFull={false}
+          />
+          </div>
+        </div>
       </div>
     </>,
     <>
       <h3>Correctness & validation</h3>
       <div className="card-content">
+        <div className="vbox"></div>
         <p>
           Upon reaching steadiness, velocity profiles are compared with
           references from Ghia & al. 82.
         </p>
-        <img src="/images/ldc/ldc_comp_re100.png" />
-        <img src="/images/ldc/ldc_comp_re400.png" />
-        <img src="/images/ldc/ldc_comp_re1000.png" />
+        <div className="hbox hfull">
+          <img src="/images/ldc/ldc_comp_re100.png" />
+          <img src="/images/ldc/ldc_comp_re400.png" />
+          <img src="/images/ldc/ldc_comp_re1000.png" />
+        </div>
         <p>
           Cases tested up to Re=1000 shows similar velocity profiles with
           relative loss ranging from 4 to 2%.
@@ -188,16 +200,18 @@ export function LDCSolver() {
       </div>
     </>,
     <>
+    <h3>Simulation monitoring</h3>
       <div className="card-content">
-        <p>Built a run monitor panel</p>
         <img src="/images/ldc/ldc_solver.png" />
+        <p>Jupyter lab reactive interface to monitor various simulation metric.</p>
       </div>
+
     </>,
   ];
 
   return (
     <>
-      <div className="vbox">
+      <div className="vbox page-content">
         <h2>Finite Difference Incompressible Lid-Driven Cavity Solver</h2>
         <ProjectCard slides={slides} />
       </div>
@@ -209,7 +223,7 @@ export function PINO() {
   const slides: React.ReactNode[] = [
     <>
       <div className="card-content">
-        <img src="/images/pino/pin_out_lighter.gif" />
+        <img src="/images/pino/pin_out_lighter.gif" width="500"  />
       </div>
     </>,
     <>
