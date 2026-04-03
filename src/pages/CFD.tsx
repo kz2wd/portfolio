@@ -162,20 +162,20 @@ export function LDCSolver() {
     <>
       <div className="card-content">
         <div className="vbox">
-        <p>
-          Implemented a Finite Difference solver for Lid Driven Cavity case with
-          uniform grid and various time schemes. Equation constraints are based
-          on Incompressible Navier Stokes with no external body force and
-          uniform viscosity.
-        </p>
-        <img src="/images/ldc/ldcs_pres.png" />
-        <p>Velocity, pressure and velocity norm at Re=1000.</p>
-        <div className="inline-container">
-          <ExternalResource
-            link="https://github.com/kz2wd/CFD-Solver"
-            name="Github"
-            isFull={false}
-          />
+          <p>
+            Implemented a Finite Difference solver for Lid Driven Cavity case
+            with uniform grid and various time schemes. Equation constraints are
+            based on Incompressible Navier Stokes with no external body force
+            and uniform viscosity.
+          </p>
+          <img src="/images/ldc/ldcs_pres.png" />
+          <p>Velocity, pressure and velocity norm at Re=1000.</p>
+          <div className="inline-container">
+            <ExternalResource
+              link="https://github.com/kz2wd/CFD-Solver"
+              name="Github"
+              isFull={false}
+            />
           </div>
         </div>
       </div>
@@ -200,12 +200,13 @@ export function LDCSolver() {
       </div>
     </>,
     <>
-    <h3>Simulation monitoring</h3>
+      <h3>Simulation monitoring</h3>
       <div className="card-content">
         <img src="/images/ldc/ldc_solver.png" />
-        <p>Jupyter lab reactive interface to monitor various simulation metric.</p>
+        <p>
+          Jupyter lab reactive interface to monitor various simulation metric.
+        </p>
       </div>
-
     </>,
   ];
 
@@ -223,7 +224,14 @@ export function PINO() {
   const slides: React.ReactNode[] = [
     <>
       <div className="card-content">
-        <img src="/images/pino/pin_out_lighter.gif" width="500"  />
+        <img src="/images/pino/pin_out_lighter.gif" width="500" />
+        <div className="inline-container">
+          <ExternalResource
+            link="https://github.com/kz2wd/Physic-Induced-Neural-Operator-Replication"
+            name="Github"
+            isFull={false}
+          />
+        </div>
       </div>
     </>,
     <>
@@ -286,6 +294,13 @@ export function GEMM() {
           Replicated up to 80% performance of locally compiled OpenBLAS, speed
           up of up to 10 times compared to naive implementation.
         </p>
+        <div className="inline-container">
+          <ExternalResource
+            link="https://github.com/kz2wd/GEMM-handmade"
+            name="Github"
+            isFull={false}
+          />
+        </div>
       </div>
     </>,
     <>
